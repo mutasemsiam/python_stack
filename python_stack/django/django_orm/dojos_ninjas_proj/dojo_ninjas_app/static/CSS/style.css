@@ -1,0 +1,46 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+
+.main{
+    width: 60%;
+    height: 800px;
+    margin: 0 auto;
+    margin-top: 20px;
+    border: 2px solid black;
+}
+form{
+    width: 50%;
+    height: 330px;
+    padding: 5%;
+}
+
+
+h3{
+    text-align: center;
+    background-color: rgb(30, 30, 82);
+    padding: 1%;
+    color: white;
+}
+
+.add-button{
+    margin: 0 auto;
+}
+#add-button{
+    background-color: rgb(30, 30, 82);
+    border: 4px solid rgb(30, 30, 82);
+    padding: 1%;
+    font-weight: bold;
+}
+
+ul{
+    width: 30%;
+    margin: 0 auto;
+    /* outline: 2px solid blue; */
+}
+
+ol{
+    margin-left: 15px;
+}
