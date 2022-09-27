@@ -1,0 +1,42 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+
+.main{
+    width: 60%;
+    height: 600px;
+    margin: 0 auto;
+    margin-top: 20px;
+    border: 2px solid black;
+}
+form{
+    width: 50%;
+    height: 330px;
+    padding: 5%;
+}
+.add-button{
+    margin: 0 auto;
+}
+#add-button{
+    background-color: rgb(30, 30, 82);
+    border: 4px solid rgb(30, 30, 82);
+    padding: 1%;
+    font-weight: bold;
+}
+h3{
+    text-align: center;
+    background-color: rgb(30, 30, 82);
+    padding: 1%;
+    color: white;
+}
+
+.datatable{
+    width: 50%;
+    padding: 5%;
+}
+.tablecontent{
+    border: 2px solid black;
+}
+
