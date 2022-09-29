@@ -18,7 +18,7 @@ def add_show(request):
     return render(request, "add_show.html")
 
 def add_new_show(request):
-    errors = Show.objects.basic_validator(request.POST)
+    errors = Show.objects.new_validator(request.POST)
     if len(errors) > 0:
         for key, value in errors.items():
             messages.error(request, value)
@@ -30,17 +30,20 @@ def add_new_show(request):
     
 
 def display_edit(request, show_id):
+    show = Show.objects.get(id=show_id)
+    show.release_date = show.release_date.strftime("%Y-%m-%d")
     context = {
-        "show": Show.objects.get(id=show_id),
+        "show": show,
     }
     
     return render(request, "edit_show.html", context)
+
 def edit_show(request, show_id):
-    errors = Show.objects.basic_validator(request.POST)
+    errors = Show.objects.edit_validator(request.POST, show_id)
     if len(errors) > 0:
         for key, value in errors.items():
             messages.error(request, value)
-        return redirect('/shows/new')
+        return redirect(f'/shows/{show_id}/edit')
     c = Show.objects.get(id = show_id)
     if request.POST['title']:
         c.title = request.POST['title']
