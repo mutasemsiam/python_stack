@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="main">
+            <form action="add" method="post">
+                {% csrf_token %}
+                <header class="form-row header_add_show">
+                    <h3>Add a New Show</h3>
+                    <a href="/shows">Go Back</a>
+                </header>
+
+                <div class="form-group row">
+                    <label for="inputTitle" class="col-sm-1 col-form-label">Title</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="inputTitle" placeholder="Title" name="title" required>
+                    </div>
+                </div>
+
+                <div class="form-row secondrow">
+                    <div class="form-group row">
+                        <label for="inputDesc" class="col-sm-3 col-form-label">Network</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="inputDesc" placeholder="Network" name="network" required>
+                        </div>
+                    </div>
+        
+                    <div class="form-group row">
+                        <label for="inputDesc" class="col-sm-5 col-form-label">Release Date</label>
+                        <div class="col-sm-7">
+                            <input type="date" class="form-control" id="inputDesc" placeholder="release_date"
+                                name="release_date" required>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <label for="inputDesc" class="col-sm-3 col-form-label">Description</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="inputDesc" placeholder="Description" name="desc">
+                    </div>
+                </div>
+                <input type="hidden" name="add" value="book">
+                <div class="col-sm-4 add-button">
+                    <button type="submit" class="btn btn-primary form-control" id="add-button">Create</button>
+                </div>
+            </form>
+            <div class="errors">
+                {% if messages %}
+                <h5><strong>Errors:</strong></h5>
+                <ul class="messages">
+                        {% for message in messages %}
+                            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                        {% endfor %}
+                </ul>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
