@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Result</title>
+</head>
+
+<body>
+    {% extends "bootstrap/base.html" %}
+    {% block title %}Submitted info{% endblock %}
+
+    {% block content %}
+    <div style="width: 50% ; border: 1px solid black; margin: 0 auto; margin-top: 40px;">
+        <table class="table table-borderless" style="margin: 0 auto;">
+            <thead>
+                <tr>
+                    <th colspan="2" scope="col" style="text-decoration: underline ;">Submitted Info</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Name:</td>
+                    <td>{{name_r}}</td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td>{{email_r}}</td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td>{{password_r}}</td>
+                </tr>
+                <tr>
+                    <td>Address:</td>
+                    <td>{{address_r}}</td>
+                </tr>
+                <tr>
+                    <td>Ciy:</td>
+                    <td>{{city_r}}</td>
+                </tr>
+                <tr>
+                    <td>Favorite Language:</td>
+                    <td>{{language_r}}</td>
+                </tr>
+                <tr>
+                    <td>Comment:</td>
+                    <td>{{comment_r}}</td>
+                </tr>
+                <tr>
+                    <td>Checked:</td>
+                    <td>{{check_r}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <form style="display: inline" action="/" method="get">
+            <button
+                style="background-color:rgb(90, 129, 145) ; color: white; box-shadow: 2px 2px black; margin-left: 80%; width: 13%; height: 30px; margin-bottom: 15px;">Go
+                Back</button>
+        </form>
+    </div>
+    {% endblock %}
+</body>
+
+</html>
