@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playground</title>
+    <style>
+        header h1{
+            text-align: center;
+            font-family: sans-serif;
+            margin-top: 60px;
+        }
+
+        main{
+            width: 90%;
+            display: flex;
+            gap: 2.62%;
+            flex-wrap: wrap;
+            margin: 0  auto;
+        }
+
+        .box{
+            width: 22%;
+            height: 0;
+            padding-bottom: 22%;
+            background-color: {{paint}};
+            border: 0.2em solid black;
+            margin-bottom: 2.62%;   
+        }
+
+        .container_case1{
+            width: 76%;
+            display: flex;
+            margin: 0 auto;
+            gap: 3%;
+        }
+
+        .box2{
+            width: 30%;
+            height: 0;
+            padding-bottom: 30%;
+            background-color: skyblue;
+            border: 0.2em solid black;
+            margin: 0 auto;    
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome!</h1>
+    </header>
+    <main>
+        {% if y == "first_page": %}
+        <div class="container_case1">
+        {% for i in range (times): %}
+        <div class="box2"></div>
+        {% endfor %}
+        </div>
+        {% elif y != "first_page": %}
+        {% for i in range (times): %}
+        <div class="box"></div>
+        {% endfor %}
+        {% endif %}
+    </main>
+
+    
+</body>
+</html>
