@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+</head>
+
+<body>
+    {% extends "bootstrap/base.html" %}
+    {% block title %}List of users{% endblock %}
+
+    {% block content %}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Full Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for name in names %}
+            <tr>
+                <td>{{name['first_name']}}</td>
+                <td>{{name['last_name']}}</td>
+                <td>{{name['first_name']}} {{name['last_name']}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endblock %}
+
+</body>
+
+</html>
