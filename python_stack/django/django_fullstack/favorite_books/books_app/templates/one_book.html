@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorite Books</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styling.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="books_container">
+        <header class="main-books">
+            <h5>Welcome, {{request.session.name}}!</h5>
+
+            <a href="/logout">Logout</a>
+        </header>
+        <div class="main_books">
+            <div class="datatable">
+                {% if request.session.user_id != book.uploaded_by.id %}
+                <h6><strong>Book title: {{book.title}}</strong></h6>
+                <h6>Added by: {{book.uploaded_by.first_name}} {{book.uploaded_by.last_name}}</h6>
+                <h6>Added on: {{book.created_at}}</h6>
+                <h6>Last updated on: {{book.updated_at}}</h6>
+                <h6>Description: {{book.desc}}</h6>
+                {% elif request.session.user_id == book.uploaded_by.id %}
+
+                <form action="{{book.id}}/update_book" method="post" id="form1">
+                    {% csrf_token %}
+                    <input type="text" class="col-sm-10 border-dark mt-2" value="{{book.title}}" name="title"
+                        id="title_update">
+                    <h6>Added by: {{book.uploaded_by.first_name}} {{book.uploaded_by.last_name}}</h6>
+                    <h6>Added on: {{book.created_at}}</h6>
+                    <h6>Last updated on: {{book.updated_at}}</h6>
+                    <h6>Description:</h6>
+                    <textarea type="text" class="form-control col-sm-10 border-dark update_inputs" id="desc_update"
+                        name="desc" placeholder="{{book.desc}}"></textarea>
+
+                </form>
+
+                <form action="{{book.id}}/delete_book" method="post" id="form2">
+                    {% csrf_token %}
+                </form>
+
+                <div class="update_btns">
+                    <button form="form1" type="submit" class="btn btn-primary form-control col-sm-4 "
+                        id="add-button">update</button>
+                    <button form="form2" type="submit" class="btn btn-primary form-control  delete_btn col-sm-4"
+                        id="add-button">Delete</button>
+
+                </div>
+                {% endif %}
+
+
+
+            </div>
+            <div class="datatable">
+
+                <h5>Users who like this book:</h5>
+
+                {% for user in book.liked_by.all %}
+                <ul class="list_of_likes">
+                    <li>{{user.first_name}} {{user.last_name}}</li>
+                </ul>
+                {% if user.id == request.session.user_id %}
+                <a href="/books/delete_fav/{{book.id}}">Unfavorite</a>
+                {% endif %}
+                {% endfor %}
+                {% if this_user not in all_likes %}
+                <a href="/books/add_to_fav/{{book.id}}">Add to Favorites</a>
+                {% endif %}
+               
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>
